@@ -1,0 +1,23 @@
+FontIcon {
+    -fx-icon-color: white;
+}
+
+.styledButton {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.menuButton {
+    -fx-background-color: #249beb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 20;
+    -fx-padding: 10px;
+    -fx-border-insets: 10px;
+    -fx-background-insets: 10px;
+}
+
+.play-font-icon FontIcon {
+    -fx-icon-code: "cil-media-play";
+    -fx-icon-size: 20;
+}

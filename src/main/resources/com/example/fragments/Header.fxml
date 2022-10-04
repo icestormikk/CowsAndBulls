@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<FlowPane alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" prefWidth="200.0" BorderPane.alignment="CENTER">
+    <children>
+        <VBox alignment="TOP_CENTER">
+            <children>
+                <Label text="Cows And Bulls Apllication">
+                    <font>
+                        <Font name="Calibri Bold" size="37.0" />
+                    </font>
+                </Label>
+                <Label layoutX="10.0" layoutY="10.0" text="v 0.0.1 - WIP Version" textFill="#949494">
+                    <font>
+                        <Font name="Calibri" size="16.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+    </children>
+</FlowPane>
