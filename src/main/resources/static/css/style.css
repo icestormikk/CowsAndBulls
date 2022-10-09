@@ -17,6 +17,15 @@ FontIcon {
     -fx-background-insets: 10px;
 }
 
+.gamemodeButton {
+    -fx-background-color: #63DBCB;
+    -fx-background-radius: 3;
+}
+.gamemodeButton FontIcon {
+    -fx-icon-color: black;
+    -fx-icon-size: 20;
+}
+
 .play-font-icon FontIcon {
     -fx-icon-code: "cil-media-play";
     -fx-icon-size: 20;
