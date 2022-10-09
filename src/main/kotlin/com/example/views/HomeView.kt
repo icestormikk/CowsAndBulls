@@ -45,6 +45,7 @@ class HomeView: View(
             menuButtonsContainer.children.add(
                 Button(optionName).addClass("menuButton").apply {
                     useMaxWidth = true
+                    graphic = optionIcon
                     onHover {
                         scale(
                             time = Duration.millis(ANIMATION_DURATION),
@@ -52,7 +53,9 @@ class HomeView: View(
                             reversed = false
                         ).play()
                     }
-                    graphic = optionIcon
+                    onLeftClick {
+                        root.center.replaceChildren(screen.root)
+                    }
                 }
             )
         }
