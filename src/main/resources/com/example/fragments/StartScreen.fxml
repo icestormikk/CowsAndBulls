@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="700.0">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <Label text="Начать игру">
+               <font>
+                  <Font name="Calibri Bold" size="28.0" />
+               </font>
+            </Label>
+            <FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <children>
+                  <Label text="Перед началом игры рекомендуется ознакомиться с разделом " wrapText="true">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="redirectToRulesLabel" layoutX="10.0" layoutY="10.0" text="&quot;Правила игры&quot;" wrapText="true">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="10.0" text="." wrapText="true">
+                     <font>
+                        <Font name="Calibri" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </FlowPane>
+            <Label text="Выберите кто будет отгадывать число:">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Calibri" size="18.0" />
+               </font>
+            </Label>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="578.0" spacing="10.0">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" styleClass="gamemodeButton">
+                     <children>
+                        <FlowPane fx:id="gamemodePanelComputer" maxHeight="-Infinity">
+                           <children>
+                              <Label maxHeight="-Infinity" maxWidth="-Infinity" text="Компьютер">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" top="2.0" />
+                           </padding>
+                        </FlowPane>
+                        <Label text="Описание">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font></Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" styleClass="gamemodeButton">
+                     <children>
+                        <FlowPane fx:id="gamemodePanelHuman" alignment="TOP_RIGHT" maxHeight="-Infinity">
+                           <children>
+                              <Label text="Человек">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="2.0" top="2.0" />
+                           </padding>
+                        </FlowPane>
+                        <Label text="Описание">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </children></VBox>
+   </children>
+</FlowPane>
