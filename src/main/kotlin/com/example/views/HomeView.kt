@@ -1,11 +1,11 @@
 package com.example.views
 
 import com.example.config.GAME_TITLE
-import com.example.fragments.AuthorInfoScreen
+import com.example.screens.AuthorInfoScreen
 import com.example.fragments.Header
-import com.example.fragments.RulesScreen
-import com.example.fragments.StartScreen
-import com.example.fragments.StatisticsScreen
+import com.example.screens.RulesScreen
+import com.example.screens.StartScreen
+import com.example.screens.StatisticsScreen
 import javafx.geometry.Point2D
 import javafx.scene.control.Button
 import javafx.scene.layout.BorderPane
