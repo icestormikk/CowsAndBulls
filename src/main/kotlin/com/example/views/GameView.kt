@@ -145,7 +145,13 @@ class GameView: View("Game View") {
                     readonlyColumn("Cows count", HistoryNote::cowsCount)
                     readonlyColumn("Bulls count", HistoryNote::bullsCount)
                 }.apply {
-                    useMaxSize = true
+                    prefWidthProperty().bind(historyTableViewContainer.widthProperty())
+                    prefHeightProperty().bind(historyTableViewContainer.heightProperty())
+                    columns.forEach {
+                        it.prefWidthProperty().bind(
+                            this.prefWidthProperty().div(columns.size)
+                        )
+                    }
                 }
             )
         }
