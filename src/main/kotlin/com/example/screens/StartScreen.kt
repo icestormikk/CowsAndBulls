@@ -1,6 +1,8 @@
 package com.example.screens
 
+import com.example.views.GameView
 import javafx.scene.Parent
+import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.layout.Border
 import javafx.scene.layout.BorderPane
@@ -19,9 +21,11 @@ class StartScreen: Fragment("StartScreen") {
     override val root: Parent by fxml()
 
     private val rulesScreen = find(RulesScreen::class)
+    private val gameScreen = find(GameView::class)
     private val redirectToRulesLabel: Label by fxid()
     private val gamemodePanelComputer: FlowPane by fxid()
     private val gamemodePanelHuman: FlowPane by fxid()
+    private val startButton: Button by fxid()
 
     init {
         redirectToRulesLabel.onLeftClick {
@@ -43,6 +47,10 @@ class StartScreen: Fragment("StartScreen") {
                     )) else Border.EMPTY
                 }
             }
+        }
+
+        startButton.onLeftClick {
+            root.parent.parent.replaceWith(gameScreen.root)
         }
     }
 }
