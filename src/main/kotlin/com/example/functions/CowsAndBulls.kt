@@ -16,6 +16,9 @@ object CowsAndBulls {
      * @param answer the number to be guessed
      */
     fun initializeGame(sequenceLength: Int, answer: String? = null) {
+        history.clear()
+        sequenceOfNumbers.clear()
+
         generateSequence(sequenceLength)
         this.sequenceLength = sequenceLength
 
@@ -39,6 +42,12 @@ object CowsAndBulls {
                 break
             }
         }
+    }
+
+    fun clearGame() {
+        listOf(history,sequenceOfNumbers).forEach { it.clear() }
+        sequenceLength = 1
+        realAnswer = null
     }
 
     fun fetchCompatibleNumber(): String {
