@@ -40,8 +40,19 @@ class GameView: View("Game View") {
 
     override val root: Parent by fxml()
 
-    private val changesMatrix: Canvas by fxid()
     private val historyTableViewContainer: AnchorPane by fxid()
+    private val stopwatchLabel: Label by fxid()
+    private val answerLabel: Label by fxid()
+    private val cowsCount: Spinner<Int> by fxid()
+    private val bullsCount: Spinner<Int> by fxid()
+    private val possibleAnswers: TextArea by fxid()
+    private val possibleAnswersCount: Label by fxid()
+    private val noMoreAnswers: TextArea by fxid()
+    private val noMoreAnswersCount: Label by fxid()
+    private val lostedNumbersCount: Label by fxid()
+    private val submitCountsButton: Button by fxid()
+    private val restartButton: Button by fxid()
+    private val exitButton: Button by fxid()
 
     init {
         getHistorySnapshot().also { historySnapshot ->
