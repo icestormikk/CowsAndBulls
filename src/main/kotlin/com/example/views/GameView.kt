@@ -1,6 +1,7 @@
 package com.example.views
 
 import com.example.domain.HistoryNote
+import com.example.functions.CowsAndBulls
 import com.example.functions.CowsAndBulls.addToHistory
 import com.example.functions.CowsAndBulls.fetchCompatibleNumber
 import com.example.functions.CowsAndBulls.getActualSequence
@@ -27,32 +28,30 @@ private const val MINUTES_IN_HOUR = 60
 var CHOSEN_SEQUENCE_LENGTH = 1
 
 class GameView: View("Game View") {
-    companion object GameConfiguration {
-        private var timerAnimation = Timeline()
-
-        private var duration = Duration.ZERO
-        private val stringTimeProperty = SimpleStringProperty()
-        private var actualAnswer: String = ""
-
-        private var lastSequenceState = mutableSetOf<String>()
-        private var noMoreAnswersSequence = mutableSetOf<String>()
-    }
-
     override val root: Parent by fxml()
 
     private val historyTableViewContainer: AnchorPane by fxid()
     private val stopwatchLabel: Label by fxid()
     private val answerLabel: Label by fxid()
+    private val noMoreAnswersCount: Label by fxid()
+    private val lostedNumbersCount: Label by fxid()
+    private val possibleAnswersCount: Label by fxid()
+    private val iThinkLabel: Label by fxid()
+    private val aboutTimeLabel: Label by fxid()
     private val cowsCount: Spinner<Int> by fxid()
     private val bullsCount: Spinner<Int> by fxid()
     private val possibleAnswers: TextArea by fxid()
-    private val possibleAnswersCount: Label by fxid()
     private val noMoreAnswers: TextArea by fxid()
-    private val noMoreAnswersCount: Label by fxid()
-    private val lostedNumbersCount: Label by fxid()
     private val submitCountsButton: Button by fxid()
     private val restartButton: Button by fxid()
     private val exitButton: Button by fxid()
+
+    private var timerAnimation = Timeline()
+    private var duration = Duration.ZERO
+    private val stringTimeProperty = SimpleStringProperty()
+    private var actualAnswer: String = ""
+    private var lastSequenceState = mutableSetOf<String>()
+    private var noMoreAnswersSequence = mutableSetOf<String>()
 
     init {
         configureHistoryView()
@@ -93,15 +92,13 @@ class GameView: View("Game View") {
     }
 
     private fun victory() {
-        information(
-            header = "Число отгадано!",
-            content = "Вы загадали число: $actualAnswer. Ответ был получен за время: " +
-                    "${duration.toBeautyString()}c"
-        )
+        iThinkLabel.text = "Вы загадали число: $actualAnswer"
+        aboutTimeLabel.text = "Ответ был получен за время: ${duration.toBeautyString()}"
 
         timerAnimation.stop()
+
         answerLabel.textFill = Color.LIMEGREEN
-        listOf(restartButton, exitButton, submitCountsButton).forEach { it.isDisable = true }
+        submitCountsButton.isDisable = true
     }
 
     private fun doOneMoreMove() {
@@ -120,10 +117,7 @@ class GameView: View("Game View") {
 
         val newSequenceState = getActualSequence()
         lastSequenceState.minus(newSequenceState.toSet()).also {
-            with(noMoreAnswersSequence) {
-                this.addAll(it)
-                sorted()
-            }
+            noMoreAnswersSequence.addAll(it)
             lostedNumbersCount.text = "${it.size}"
         }
 
@@ -158,6 +152,8 @@ class GameView: View("Game View") {
     }
 
     private fun configureTimer() {
+        timerAnimation.keyFrames.clear()
+
         timerAnimation = Timeline(
             KeyFrame(Duration.millis(1.0), {
                 duration += (it.source as KeyFrame).time
