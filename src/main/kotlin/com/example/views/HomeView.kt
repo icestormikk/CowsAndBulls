@@ -1,6 +1,6 @@
 package com.example.views
 
-import com.example.config.GAME_TITLE
+import com.example.configuration.GAME_TITLE
 import com.example.screens.AuthorInfoScreen
 import com.example.fragments.Header
 import com.example.screens.RulesScreen
@@ -14,8 +14,8 @@ import javafx.util.Duration
 import org.kordamp.ikonli.javafx.FontIcon
 import tornadofx.*
 
-private const val ZOOM_X_COF = 1.05
-private const val ZOOM_Y_COF = 1.1
+private const val ZOOM_X_COF = 1.02
+private const val ZOOM_Y_COF = 1.05
 private const val ANIMATION_DURATION = 100.0
 
 class HomeView: View(
@@ -36,6 +36,10 @@ class HomeView: View(
             it!!.isResizable = true
         }
 
+        configureMenu()
+    }
+
+    private fun configureMenu() {
         listOf(
             Triple("Start Game", FontIcon("cil-chevron-double-right"), startScreen),
             Triple("Rules", FontIcon("cil-list-rich"), rulesScreen),
