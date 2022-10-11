@@ -108,6 +108,7 @@
             <HBox layoutX="20.0" layoutY="106.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="578.0" spacing="10.0">
                <children>
                   <Button fx:id="startButton" mnemonicParsing="false" styleClass="menuButton" text="Start" />
+                  <Spinner fx:id="sequenceUserLength" editable="true" />
                </children>
             </HBox>
          </children></VBox>

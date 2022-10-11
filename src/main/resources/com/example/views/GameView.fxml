@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <TabPane prefWidth="414.0" style="-fx-border-width: 0 0 0 1; -fx-border-color: lightgray;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="История ходов">
+            <content>
+              <AnchorPane fx:id="historyTableViewContainer" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Статистика изменений">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="447.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <FlowPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0">
+                           <children>
+                              <FlowPane>
+                                 <children>
+                                    <Label text="Числа, которые могут быть ответом (">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                    </Label>
+                                    <Label fx:id="possibleAnswersCount" layoutX="10.0" layoutY="10.0" text="-1">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="):">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <FlowPane.margin>
+                                    <Insets bottom="4.0" />
+                                 </FlowPane.margin>
+                              </FlowPane>
+                              <TextArea fx:id="possibleAnswers" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="398.0" promptText="Здесь будут числа-претенденты на правильный ответ" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri" size="15.0" />
+                                 </font></TextArea>
+                              <FlowPane layoutX="16.0" layoutY="16.0">
+                                 <children>
+                                    <Label text="Исключенные числа (">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                    </Label>
+                                    <Label fx:id="noMoreAnswersCount" layoutX="10.0" layoutY="10.0" text="-1">
+                                       <font>
+                                          <Font name="Calibri Bold" size="16.0" />
+                                       </font>
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="):">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <FlowPane.margin>
+                                    <Insets bottom="4.0" top="8.0" />
+                                 </FlowPane.margin>
+                              </FlowPane>
+                              <TextArea fx:id="noMoreAnswers" editable="false" layoutX="10.0" layoutY="42.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="398.0" promptText="Числа исключенные из предыдущего списка" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri" size="15.0" />
+                                 </font></TextArea>
+                              <FlowPane>
+                                 <FlowPane.margin>
+                                    <Insets top="10.0" />
+                                 </FlowPane.margin>
+                                 <children>
+                                    <Label text="Кол-во исключенных с предыдущей итерации чисел:">
+                                       <font>
+                                          <Font name="Calibri" size="16.0" />
+                                       </font>
+                                       <FlowPane.margin>
+                                          <Insets right="4.0" />
+                                       </FlowPane.margin>
+                                    </Label>
+                                    <Label fx:id="lostedNumbersCount" layoutX="10.0" layoutY="10.0" text="1024">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font>
+                                       <FlowPane.margin>
+                                          <Insets />
+                                       </FlowPane.margin>
+                                    </Label>
+                                 </children>
+                              </FlowPane>
+                           </children>
+                           <padding>
+                              <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </padding>
+                        </FlowPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </right>
+   <top>
+      <FlowPane BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER">
+               <children>
+                  <Label text="Я думаю, вы загадали число...">
+                     <font>
+                        <Font name="Calibri Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="answerLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="5" textFill="#249beb">
+                     <font>
+                        <Font name="Calibri Bold" size="80.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Ваш ответ:">
+                     <font>
+                        <Font name="Calibri Bold" size="28.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <FlowPane alignment="CENTER">
+                     <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Количество &quot;коров&quot;:">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <FlowPane.margin>
+                              <Insets right="10.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Spinner fx:id="cowsCount" editable="true" prefHeight="25.0" prefWidth="123.0" />
+                     </children></FlowPane>
+                  <FlowPane alignment="CENTER" layoutX="10.0" layoutY="185.0">
+                     <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Количество &quot;быков&quot;:">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <FlowPane.margin>
+                              <Insets right="10.0" />
+                           </FlowPane.margin>
+                        </Label>
+                        <Spinner fx:id="bullsCount" editable="true" prefHeight="25.0" prefWidth="123.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </FlowPane>
+                  <Button id="submitButton" fx:id="submitCountsButton" mnemonicParsing="false" styleClass="menuButton" text="Отправить">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children></VBox>
+         </children>
+      </FlowPane>
+   </center>
+   <bottom>
+      <BorderPane style="-fx-border-color: lightgray; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+         <left>
+            <FlowPane alignment="CENTER_LEFT" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Времени прошло: ">
+                     <font>
+                        <Font name="Calibri Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="stopwatchLabel" text="00:00:-1">
+                     <font>
+                        <Font name="Calibri" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="4.0" />
+               </padding>
+            </FlowPane>
+         </left>
+         <right>
+            <FlowPane alignment="CENTER_RIGHT" hgap="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="exitButton" mnemonicParsing="false" style="-fx-border-width: 1; -fx-border-color: gray; -fx-background-radius: 3; -fx-border-radius: 3;" styleClass="gameControlButtons" text="Выйти из игры">
+                     <font>
+                        <Font name="Calibri" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="restartButton" mnemonicParsing="false" style="-fx-border-width: 1; -fx-border-color: gray; -fx-background-radius: 3; -fx-border-radius: 3;" styleClass="gameControlButtons" text="Рестарт">
+                     <font>
+                        <Font name="Calibri" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets right="4.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="2.0" top="2.0" />
+               </BorderPane.margin></FlowPane>
+         </right>
+      </BorderPane>
+   </bottom>
+</BorderPane>

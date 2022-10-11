@@ -13,8 +13,11 @@ FontIcon {
     -fx-font-weight: bold;
     -fx-font-size: 20;
     -fx-padding: 10px;
-    -fx-border-insets: 10px;
-    -fx-background-insets: 10px;
+    -fx-border-insets: 4px;
+    -fx-background-insets: 4px;
+}
+#submitButton {
+    -fx-background-color: #59e373;
 }
 
 .gamemodeButton {
@@ -24,6 +27,15 @@ FontIcon {
 .gamemodeButton FontIcon {
     -fx-icon-color: black;
     -fx-icon-size: 20;
+}
+
+.gameControlButtons {
+    -fx-background-color: #f03246;
+    -fx-text-fill: white;
+}
+.gameControlButtons FontIcon {
+    -fx-icon-color: white;
+    -fx-icon-size: 14;
 }
 
 .play-font-icon FontIcon {
