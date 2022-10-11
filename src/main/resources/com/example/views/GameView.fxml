@@ -130,9 +130,14 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <Label text="Я думаю, вы загадали число...">
+                  <Label fx:id="iThinkLabel" text="Я думаю, вы загадали число...">
                      <font>
                         <Font name="Calibri Bold" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="aboutTimeLabel" layoutX="25.0" layoutY="10.0" textFill="#41d167">
+                     <font>
+                        <Font name="Calibri Bold" size="18.0" />
                      </font>
                   </Label>
                   <Label fx:id="answerLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="5" textFill="#249beb">
