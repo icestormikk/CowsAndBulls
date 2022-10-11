@@ -59,9 +59,15 @@ class GameView: View("Game View") {
 
         restartButton.apply {
             graphic = FontIcon("cil-loop-circular")
+            onLeftClick {
+                restart()
+            }
         }
         exitButton.apply {
             graphic = FontIcon("cil-exit-to-app")
+            onLeftClick {
+                exit()
+            }
         }
 
         submitCountsButton.onLeftClick {
@@ -79,6 +85,15 @@ class GameView: View("Game View") {
     }
 
     fun configureInitialState() {
+        iThinkLabel.apply {
+            text = "Я думаю, вы загадали число..."
+            textFill = Color.BLACK
+        }
+        aboutTimeLabel.text = ""
+        answerLabel.textFill = Color.web("#249beb")
+
+        submitCountsButton.isDisable = false
+
         listOf(cowsCount, bullsCount).forEach {
             it.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(
                 /* min = */ 0, /* max = */ CHOSEN_SEQUENCE_LENGTH, /* initialValue = */0,
@@ -90,7 +105,24 @@ class GameView: View("Game View") {
         gameStatisticsFieldsUpdate()
         doOneMoreMove()
     }
-
+    @Suppress("UNCHECKED_CAST")
+    private fun exit() {
+        CowsAndBulls.clearGame()
+        listOf(lastSequenceState, noMoreAnswersSequence).forEach { it.clear() }
+        (historyTableViewContainer.children[0] as TableView<HistoryNote>).refresh()
+        timerAnimation.apply { stop(); duration = Duration.ZERO }
+        runLater {
+            replaceWith<HomeView>()
+        }
+    }
+    private fun restart() {
+        CowsAndBulls.initializeGame(CHOSEN_SEQUENCE_LENGTH)
+        duration = Duration.ZERO
+        listOf(lastSequenceState, noMoreAnswersSequence).forEach {
+            it.clear()
+        }
+        configureInitialState()
+    }
     private fun victory() {
         iThinkLabel.text = "Вы загадали число: $actualAnswer"
         aboutTimeLabel.text = "Ответ был получен за время: ${duration.toBeautyString()}"
