@@ -27,6 +27,17 @@ private const val MINUTES_IN_HOUR = 60
 var CHOSEN_SEQUENCE_LENGTH = 1
 
 class GameView: View("Game View") {
+    companion object GameConfiguration {
+        private var timerAnimation = Timeline()
+
+        private var duration = Duration.ZERO
+        private val stringTimeProperty = SimpleStringProperty()
+        private var actualAnswer: String = ""
+
+        private var lastSequenceState = mutableSetOf<String>()
+        private var noMoreAnswersSequence = mutableSetOf<String>()
+    }
+
     override val root: Parent by fxml()
 
     private val changesMatrix: Canvas by fxid()
