@@ -13,7 +13,7 @@
                         <Font name="Calibri Bold" size="37.0" />
                     </font>
                 </Label>
-                <Label layoutX="10.0" layoutY="10.0" text="v 0.0.2 - WIP Version" textFill="#949494">
+                <Label layoutX="10.0" layoutY="10.0" text="v 0.1.5 - Pre-Realise" textFill="#949494">
                     <font>
                         <Font name="Calibri" size="16.0" />
                     </font>
