@@ -1,6 +1,6 @@
 package com.example.views
 
-import com.example.config.GAME_TITLE
+import com.example.configuration.GAME_TITLE
 import com.example.fragments.Header
 import javafx.application.Platform
 import javafx.scene.Cursor
