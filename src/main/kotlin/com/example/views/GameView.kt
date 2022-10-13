@@ -100,6 +100,10 @@ class GameView: View("Game View") {
     }
 
     fun configureInitialState() {
+        startDateTime = LocalDateTime.now()
+        restartsCounter = 0
+        gamemode = CHOSEN_GAMEMODE
+
         iThinkLabel.apply {
             text = "Я думаю, вы загадали число..."
             textFill = Color.BLACK
