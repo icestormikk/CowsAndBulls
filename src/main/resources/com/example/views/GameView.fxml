@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -181,10 +182,14 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </FlowPane>
-                  <Button id="submitButton" fx:id="submitCountsButton" mnemonicParsing="false" styleClass="menuButton" text="Отправить">
+                  <Button fx:id="submitCountsButton" mnemonicParsing="false" text="Отправить">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
+                     <styleClass>
+                        <String fx:value="menuButton" />
+                        <String fx:value="submitButton" />
+                     </styleClass>
                   </Button>
                </children></VBox>
          </children>
