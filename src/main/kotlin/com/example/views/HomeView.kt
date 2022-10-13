@@ -58,6 +58,8 @@ class HomeView: View(
                         ).play()
                     }
                     onLeftClick {
+                        if (this.text == "Statistics")
+                            statisticsScreen.causeStatsTableUpdate()
                         root.center.replaceChildren(screen.root)
                     }
                 }
