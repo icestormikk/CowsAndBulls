@@ -239,11 +239,7 @@ class GameView: View("Game View") {
                 }.apply {
                     prefWidthProperty().bind(historyTableViewContainer.widthProperty())
                     prefHeightProperty().bind(historyTableViewContainer.heightProperty())
-                    columns.forEach {
-                        it.prefWidthProperty().bind(
-                            this.prefWidthProperty().div(columns.size)
-                        )
-                    }
+                    setEqualWidthForColumns()
                 }
             )
         }
