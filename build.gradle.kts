@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.20"
     id("org.openjfx.javafxplugin") version "0.0.7"
+    kotlin("plugin.serialization") version "1.7.20"
     application
 }
 
@@ -22,6 +23,7 @@ dependencies {
     implementation("org.openjfx:javafx:19")
     implementation("org.kordamp.ikonli:ikonli-javafx:12.3.1")
     implementation("org.kordamp.ikonli:ikonli-coreui-pack:12.3.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0")
     testImplementation(kotlin("test"))
 }
 
