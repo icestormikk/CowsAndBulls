@@ -1,5 +1,8 @@
 package com.example.configuration
 
-enum class Gamemode {
-    LEADER_PLAYER, LEADER_COMPUTER
+enum class Gamemode(
+    val title: String
+) {
+    LEADER_PLAYER("Ведущий - игрок"),
+    LEADER_COMPUTER("Ведущий - компьютер")
 }
