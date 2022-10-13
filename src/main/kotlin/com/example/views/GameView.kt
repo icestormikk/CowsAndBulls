@@ -111,7 +111,11 @@ class GameView: View("Game View") {
         aboutTimeLabel.text = ""
         answerLabel.textFill = Color.web("#249beb")
 
-        submitCountsButton.isDisable = false
+        submitCountsButton.apply {
+            isDisable = false
+            text = "Отправить"
+            addClass("submitButton").removeClass("cancelButton")
+        }
 
         listOf(cowsCount, bullsCount).forEach {
             it.valueFactory = SpinnerValueFactory.IntegerSpinnerValueFactory(
@@ -140,6 +144,11 @@ class GameView: View("Game View") {
         listOf(lastSequenceState, noMoreAnswersSequence).forEach {
             it.clear()
         }
+        submitCountsButton.apply {
+            text = "Отправить"
+            addClass("submitButton").removeClass("cancelButton")
+        }
+
         configureInitialState()
     }
     private fun victory() {
@@ -151,15 +160,43 @@ class GameView: View("Game View") {
         answerLabel.textFill = Color.LIMEGREEN
         submitCountsButton.isDisable = true
     }
+    private fun error() {
+        callAlertWindow(
+            headerText = "Что-то пошло не так...",
+            content = "Не удалось сделать предположение о следующем числе. Возможно, " +
+                    "вы ввели информацию, расходящуюся с загаданным Вами числом.\n" +
+                    "Проверьте историю ходов и нажмите кнопку \"Рестарт\"."
+        )
+        answerLabel.textFill = Color.RED
+        iThinkLabel.textFill = Color.RED
+        submitCountsButton.apply {
+            isDisable = true
+            text = "Требуется перезапуск игры"
+            addClass("cancelButton").removeClass("submitButton")
+        }
+        timerAnimation.stop()
+    }
 
     private fun doOneMoreMove() {
-        actualAnswer = fetchCompatibleNumber()
+        try {
+            actualAnswer = fetchCompatibleNumber()
+        } catch (_: NoSuchElementException) {
+            error()
+        }
         answerLabel.text = actualAnswer
 
         listOf(cowsCount, bullsCount).forEach {
             it.valueFactory.value = 0
         }
     }
+
+    private fun callAlertWindow(headerText: String, content: String, title: String? = null) =
+        alert(
+            type = Alert.AlertType.ERROR,
+            header = headerText,
+            content = content,
+            title = title ?: "The algorithms are not perfect"
+        )
 
     @Suppress("UNCHECKED_CAST")
     private fun gameStatisticsFieldsUpdate() {
