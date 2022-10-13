@@ -1,15 +1,20 @@
 package com.example.views
 
+import com.example.configuration.Gamemode
+import com.example.configuration.Gamemode.LEADER_PLAYER
 import com.example.domain.HistoryNote
 import com.example.functions.CowsAndBulls
 import com.example.functions.CowsAndBulls.addToHistory
 import com.example.functions.CowsAndBulls.fetchCompatibleNumber
 import com.example.functions.CowsAndBulls.getActualSequence
 import com.example.functions.CowsAndBulls.getHistorySnapshot
+import com.example.configuration.setEqualWidthForColumns
+import com.example.domain.StatisticsNote
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
 import javafx.beans.property.SimpleStringProperty
 import javafx.scene.Parent
+import javafx.scene.control.Alert
 import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.Spinner
@@ -21,14 +26,24 @@ import javafx.scene.paint.Color
 import javafx.util.Duration
 import org.kordamp.ikonli.javafx.FontIcon
 import tornadofx.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlin.properties.Delegates
 
 private const val HOURS_IN_DAY = 24
 private const val MINUTES_IN_HOUR = 60
 var CHOSEN_SEQUENCE_LENGTH = 1
+var CHOSEN_GAMEMODE = LEADER_PLAYER
 
 class GameView: View("Game View") {
     override val root: Parent by fxml()
+
+    companion object GameStats {
+        private lateinit var startDateTime: LocalDateTime
+        private lateinit var gamemode : Gamemode
+        private var restartsCounter by Delegates.notNull<Int>()
+    }
 
     private val historyTableViewContainer: AnchorPane by fxid()
     private val stopwatchLabel: Label by fxid()
