@@ -158,6 +158,14 @@ class GameView: View("Game View") {
         aboutTimeLabel.text = "Ответ был получен за время: ${duration.toBeautyString()}"
 
         timerAnimation.stop()
+        CowsAndBulls.addStatistics(
+            StatisticsNote(
+                startDateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy - HH:mm")),
+                gamemode.title,
+                duration.toBeautyString(),
+                restartsCounter
+            )
+        )
 
         answerLabel.textFill = Color.LIMEGREEN
         submitCountsButton.isDisable = true
