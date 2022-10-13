@@ -139,6 +139,8 @@ class GameView: View("Game View") {
         }
     }
     private fun restart() {
+        restartsCounter++
+
         CowsAndBulls.initializeGame(CHOSEN_SEQUENCE_LENGTH)
         duration = Duration.ZERO
         listOf(lastSequenceState, noMoreAnswersSequence).forEach {
