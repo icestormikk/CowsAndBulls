@@ -16,8 +16,11 @@ FontIcon {
     -fx-border-insets: 4px;
     -fx-background-insets: 4px;
 }
-#submitButton {
+.submitButton {
     -fx-background-color: #59e373;
+}
+.cancelButton {
+    -fx-background-color: #f21010;
 }
 
 .gamemodeButton {
