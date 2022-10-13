@@ -1,10 +1,13 @@
 package com.example.functions
 
 import com.example.domain.HistoryNote
+import com.example.domain.StatisticsNote
 import kotlin.math.pow
 import kotlin.properties.Delegates
-
+@Suppress("TooManyFunctions")
 object CowsAndBulls {
+    private val statisticsData = mutableListOf<StatisticsNote>()
+
     private var sequenceLength by Delegates.notNull<Int>()
     private val history = mutableListOf<HistoryNote>()
     private val sequenceOfNumbers = mutableListOf<String>()
@@ -130,4 +133,13 @@ object CowsAndBulls {
 
     fun getActualSequence(): List<String> =
         sequenceOfNumbers
+
+    fun getStatistics(): List<StatisticsNote> =
+        statisticsData
+
+    fun addStatistics(statisticsNote: StatisticsNote) =
+        statisticsData.add(statisticsNote)
+
+    fun initiateStatistics(statisticsNotes: List<StatisticsNote>) =
+        statisticsData.addAll(statisticsNotes)
 }
