@@ -99,9 +99,10 @@ class GameView: View("Game View") {
         }
     }
 
-    fun configureInitialState() {
+    fun configureInitialState(isRestart: Boolean = false) {
         startDateTime = LocalDateTime.now()
-        restartsCounter = 0
+        if (!isRestart)
+            restartsCounter = 0
         gamemode = CHOSEN_GAMEMODE
 
         iThinkLabel.apply {
@@ -151,7 +152,7 @@ class GameView: View("Game View") {
             addClass("submitButton").removeClass("cancelButton")
         }
 
-        configureInitialState()
+        configureInitialState(isRestart = true)
     }
     private fun victory() {
         iThinkLabel.text = "Вы загадали число: $actualAnswer"
@@ -160,7 +161,7 @@ class GameView: View("Game View") {
         timerAnimation.stop()
         CowsAndBulls.addStatistics(
             StatisticsNote(
-                startDateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy - HH:mm")),
+                startDateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy - HH:mm:ss")),
                 gamemode.title,
                 duration.toBeautyString(),
                 restartsCounter
