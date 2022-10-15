@@ -11,13 +11,32 @@
          <children>
             <Label maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" text="Правила игры &quot;Быки и коровы&quot;">
                <font>
-                  <Font name="Calibri Bold" size="24.0" />
+                  <Font name="Calibri Bold" size="28.0" />
                </font>
             </Label>
-            <Label text="Label">
+            <Label prefWidth="580.0" text="Первый игрок (компьютер или человек) загадывает число* без повторяющихся цифр. Задача второго игрока - отгадать загаданное число. В ответ на догадку соперник сообщает число «быков» — угаданных цифр, которые стоят на своём месте, и «коров» — угаданных цифр, стоящих не на своём месте." wrapText="true">
                <font>
                   <Font name="Calibri" size="16.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="20.0" layoutY="68.0" prefWidth="580.0" text="Например, если загадано 1234, а догадкой было 1345, то 1 — это бык, 3 и 4 — коровы, и в ответ услышишь «один бык, две коровы». Опираясь на эту информацию, нужно сделать новый ход (предложить новую догадку) и так далее, пока не получишь наконец «четырёх быков» (полностью угаданное число)." wrapText="true">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="20.0" layoutY="162.0" prefWidth="580.0" text="* - длиной от 1 до 6 символов, в качестве первой цифры может использоваться любое значение, кроме 0" textFill="#656565" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </Label>
          </children>
          <padding>

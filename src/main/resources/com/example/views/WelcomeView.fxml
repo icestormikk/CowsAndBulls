@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,12 +11,13 @@
          <children>
             <VBox alignment="CENTER">
                <children>
-                  <ImageView fx:id="imageContainer" fitHeight="220.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </VBox.margin></ImageView>
-                  <VBox fx:id="controlsVBox" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
+                        <Label prefHeight="256.0" prefWidth="486.0" text="Быки и коровы — логическая игра, в ходе которой за несколько попыток один из игроков должен определить, что задумал другой игрок. Варианты игры могут зависеть от типа отгадываемой последовательности — это могут быть числа, цвета, пиктограммы или слова. После каждой попытки задумавший игрок выставляет «оценку», указывая количество угаданного без совпадения с их позициями (количество «коров») и полных совпадений (количество «быков»)." textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Calibri" size="18.0" />
+                           </font>
+                        </Label>
                         <Button fx:id="playImageContainer" maxWidth="-Infinity" mnemonicParsing="false" onAction="#enter" prefWidth="200.0" style="-fx-background-color: #249beb;" styleClass="styledButton" textFill="#355870">
                            <VBox.margin>
                               <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
@@ -25,7 +25,7 @@
                            <graphic>
                               <FlowPane alignment="CENTER">
                                  <children>
-                                    <Label maxHeight="1.7976931348623157E308" text="Launch" textFill="WHITE">
+                                    <Label maxHeight="1.7976931348623157E308" text="Запустить" textFill="WHITE">
                                        <font>
                                           <Font name="Calibri Bold" size="20.0" />
                                        </font>
