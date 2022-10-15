@@ -6,7 +6,6 @@ FontIcon {
     -fx-text-fill: white;
     -fx-font-weight: bold;
 }
-
 .menuButton {
     -fx-background-color: #249beb;
     -fx-text-fill: white;
@@ -44,4 +43,8 @@ FontIcon {
 .play-font-icon FontIcon {
     -fx-icon-code: "cil-media-play";
     -fx-icon-size: 20;
+}
+.author-info-links FontIcon {
+    -fx-icon-color: black;
+    -fx-icon-size: 24;
 }
