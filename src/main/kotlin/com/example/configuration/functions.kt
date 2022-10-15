@@ -1,7 +1,12 @@
 package com.example.configuration
 
 import javafx.scene.control.TableView
+import javafx.util.Duration
 import tornadofx.*
+import java.util.*
+
+private const val HOURS_IN_DAY = 24
+private const val MINUTES_IN_HOUR = 60
 
 fun <T> TableView<T>.setEqualWidthForColumns() {
     columns.forEach {
@@ -10,3 +15,11 @@ fun <T> TableView<T>.setEqualWidthForColumns() {
         )
     }
 }
+
+fun Duration.toBeautyString() = String.format(
+    Locale.ENGLISH,
+    "%02d:%02d:%02d",
+    toHours().toInt() % HOURS_IN_DAY,
+    toMinutes().toInt() % MINUTES_IN_HOUR,
+    toSeconds().toInt() % MINUTES_IN_HOUR
+)
