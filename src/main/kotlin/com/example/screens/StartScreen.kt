@@ -1,7 +1,9 @@
 package com.example.screens
 
+import com.example.configuration.Gamemode
 import com.example.configuration.MAX_SEQUENCE_LENGTH
 import com.example.functions.CowsAndBulls
+import com.example.views.CHOSEN_GAMEMODE
 import com.example.views.CHOSEN_SEQUENCE_LENGTH
 import com.example.views.GameView
 import javafx.scene.Parent
@@ -29,8 +31,8 @@ class StartScreen: Fragment("StartScreen") {
     private val rulesScreen = find(RulesScreen::class)
     private val gameScreen = find(GameView::class)
     private val redirectToRulesLabel: Label by fxid()
-    private val gamemodePanelComputer: FlowPane by fxid()
-    private val gamemodePanelHuman: FlowPane by fxid()
+    private val gamemodeLeaderPlayer: FlowPane by fxid()
+    private val gamemodeLeaderComputer: FlowPane by fxid()
     private val startButton: Button by fxid()
     private val sequenceUserLength: Spinner<Int> by fxid()
 
@@ -55,24 +57,36 @@ class StartScreen: Fragment("StartScreen") {
     }
 
     private fun configureGamemodeButtons() {
-        // Computer
-        gamemodePanelComputer.children.add(1, FontIcon("cib-probot"))
-        // Human
-        gamemodePanelHuman.children.add(0, FontIcon("cil-people"))
+        gamemodeLeaderPlayer.apply {
+            children.add(1, FontIcon("cib-probot"))
+            (parent as VBox).selectBox()
+        }
+        gamemodeLeaderComputer.children.add(0, FontIcon("cil-people"))
 
-        listOf(gamemodePanelComputer, gamemodePanelHuman).forEach { flowPane ->
+        listOf(gamemodeLeaderPlayer, gamemodeLeaderComputer).forEach { flowPane ->
             with(flowPane.parent as VBox) {
-                onHover {
-                    border = if (it) Border(
-                        BorderStroke(
-                            Color.DARKGREEN,
-                            BorderStrokeStyle.SOLID,
-                            CornerRadii(2.0),
-                            BorderWidths(1.0)
-                        )
-                    ) else Border.EMPTY
+                onLeftClick {
+                    listOf(gamemodeLeaderPlayer.parent as VBox, gamemodeLeaderComputer.parent as VBox)
+                        .forEach { it.border = Border.EMPTY }
+                    selectBox()
+                    when (flowPane) {
+                        gamemodeLeaderPlayer -> { CHOSEN_GAMEMODE = Gamemode.LEADER_PLAYER }
+                        gamemodeLeaderComputer -> { CHOSEN_GAMEMODE = Gamemode.LEADER_COMPUTER }
+                        else -> error("Unknown FlowPanel!")
+                    }
                 }
             }
         }
+    }
+
+    private fun VBox.selectBox() {
+        border = Border(
+            BorderStroke(
+                Color.DARKGREEN,
+                BorderStrokeStyle.SOLID,
+                CornerRadii(2.0),
+                BorderWidths(1.0)
+            )
+        )
     }
 }

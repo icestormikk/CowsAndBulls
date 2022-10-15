@@ -18,6 +18,11 @@ private const val ZOOM_X_COF = 1.02
 private const val ZOOM_Y_COF = 1.05
 private const val ANIMATION_DURATION = 100.0
 
+private const val START_GAME_LABEL = "Начать игру"
+private const val RULES_LABEL = "Правила"
+private const val STATISTICS_LABEL = "Статистика"
+private const val ABOUT_AUTHOR_LABEL = "Об авторе"
+
 class HomeView: View(
     title = "$GAME_TITLE : Home"
 ) {
@@ -41,10 +46,10 @@ class HomeView: View(
 
     private fun configureMenu() {
         listOf(
-            Triple("Start Game", FontIcon("cil-chevron-double-right"), startScreen),
-            Triple("Rules", FontIcon("cil-list-rich"), rulesScreen),
-            Triple("Statistics", FontIcon("cil-chart"), statisticsScreen),
-            Triple("Author", FontIcon("cil-address-book"), authorInfoScreen)
+            Triple(START_GAME_LABEL, FontIcon("cil-chevron-double-right"), startScreen),
+            Triple(RULES_LABEL, FontIcon("cil-list-rich"), rulesScreen),
+            Triple(STATISTICS_LABEL, FontIcon("cil-chart"), statisticsScreen),
+            Triple(ABOUT_AUTHOR_LABEL, FontIcon("cil-address-book"), authorInfoScreen)
         ).forEach { (optionName, optionIcon, screen) ->
             menuButtonsContainer.children.add(
                 Button(optionName).addClass("menuButton").apply {
@@ -58,7 +63,7 @@ class HomeView: View(
                         ).play()
                     }
                     onLeftClick {
-                        if (this.text == "Statistics")
+                        if (this.text == STATISTICS_LABEL)
                             statisticsScreen.causeStatsTableUpdate()
                         root.center.replaceChildren(screen.root)
                     }

@@ -9,6 +9,7 @@ import com.example.functions.CowsAndBulls.fetchCompatibleNumber
 import com.example.functions.CowsAndBulls.getActualSequence
 import com.example.functions.CowsAndBulls.getHistorySnapshot
 import com.example.configuration.setEqualWidthForColumns
+import com.example.configuration.toBeautyString
 import com.example.domain.StatisticsNote
 import javafx.animation.KeyFrame
 import javafx.animation.Timeline
@@ -28,11 +29,8 @@ import org.kordamp.ikonli.javafx.FontIcon
 import tornadofx.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Locale
 import kotlin.properties.Delegates
 
-private const val HOURS_IN_DAY = 24
-private const val MINUTES_IN_HOUR = 60
 var CHOSEN_SEQUENCE_LENGTH = 1
 var CHOSEN_GAMEMODE = LEADER_PLAYER
 
@@ -74,15 +72,11 @@ class GameView: View("Game View") {
 
         restartButton.apply {
             graphic = FontIcon("cil-loop-circular")
-            onLeftClick {
-                restart()
-            }
+            onLeftClick { restart() }
         }
         exitButton.apply {
             graphic = FontIcon("cil-exit-to-app")
-            onLeftClick {
-                exit()
-            }
+            onLeftClick { exit() }
         }
 
         submitCountsButton.onLeftClick {
@@ -163,8 +157,9 @@ class GameView: View("Game View") {
             StatisticsNote(
                 startDateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy - HH:mm:ss")),
                 gamemode.title,
-                duration.toBeautyString(),
-                restartsCounter
+                duration.toSeconds(),
+                restartsCounter,
+                duration.toBeautyString()
             )
         )
 
@@ -253,9 +248,7 @@ class GameView: View("Game View") {
             KeyFrame(Duration.millis(1.0), {
                 duration += (it.source as KeyFrame).time
                 with(duration) {
-                    stringTimeProperty.set(
-                        toBeautyString()
-                    )
+                    stringTimeProperty.set(toBeautyString())
                 }
             })
         ).apply {
@@ -263,12 +256,4 @@ class GameView: View("Game View") {
             play()
         }
     }
-
-    private fun Duration.toBeautyString() = String.format(
-        Locale.ENGLISH,
-        "%02d:%02d:%02d",
-        toHours().toInt() % HOURS_IN_DAY,
-        toMinutes().toInt() % MINUTES_IN_HOUR,
-        toSeconds().toInt() % MINUTES_IN_HOUR
-    )
 }

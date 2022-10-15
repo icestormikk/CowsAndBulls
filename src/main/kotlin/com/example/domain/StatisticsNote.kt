@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 data class StatisticsNote(
     val startDateTimeAsString: String,
     val gamemodeTitle: String,
-    val durationOfGameAsString: String,
-    val restartsCount: Int
+    val durationOfGameInSeconds: Double,
+    val restartsCount: Int,
+    val durationAsBeautyString: String
 )
