@@ -29,24 +29,6 @@ object CowsAndBulls {
             .random()}"
     }
 
-    /**
-     * Starts the process of the game "Cows and bulls".
-     */
-    fun startGame() {
-        while (true) {
-            val number: String = fetchCompatibleNumber()
-
-            val (cows, bulls) = Pair(readln().toInt(), readln().toInt())
-            addToHistory(
-                HistoryNote(number, cows, bulls)
-            )
-            if (bulls == realAnswer!!.length) {
-                println("WIN!! Your number: $number")
-                break
-            }
-        }
-    }
-
     fun clearGame() {
         listOf(history,sequenceOfNumbers).forEach { it.clear() }
         sequenceLength = 1
