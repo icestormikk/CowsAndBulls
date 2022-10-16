@@ -1,5 +1,6 @@
 package com.example.screens
 
+import com.example.configuration.Gamemode
 import com.example.configuration.setEqualWidthForColumns
 import com.example.domain.StatisticsNote
 import com.example.functions.CowsAndBulls.getStatistics
@@ -16,6 +17,8 @@ class StatisticsScreen: Fragment("StatisticsScreen") {
     private val statsContainer: FlowPane by fxid()
     private val favoriteMode: Label by fxid()
     private val averageTime: Label by fxid()
+    private val leaderComputerAverageTime: Label by fxid()
+    private val leaderPlayerAverageTime: Label by fxid()
 
     init {
         getStatistics().also { statisticsNotes ->
@@ -40,10 +43,17 @@ class StatisticsScreen: Fragment("StatisticsScreen") {
         with(getStatistics()) {
             if (isNotEmpty()) {
                 favoriteMode.text = groupBy { it.gamemodeTitle }.maxBy { it.value.size }.key
-                averageTime.text = String.format(
+                leaderComputerAverageTime.text = String.format(
                     Locale.ENGLISH,
                     "%6f сек.",
-                    map { it.durationOfGameInSeconds }.average()
+                    filter { it.gamemodeTitle == Gamemode.LEADER_COMPUTER.title }
+                        .map { it.durationOfGameInSeconds }.average()
+                )
+                leaderPlayerAverageTime.text = String.format(
+                    Locale.ENGLISH,
+                    "%6f сек.",
+                    filter { it.gamemodeTitle == Gamemode.LEADER_PLAYER.title }
+                        .map { it.durationOfGameInSeconds }.average()
                 )
             }
         }
