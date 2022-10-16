@@ -70,7 +70,7 @@ object CowsAndBulls {
      * @param realAnswer
      * @return Pair<Int, Int>
      */
-    private fun cowsAndBullsCounter(
+    fun cowsAndBullsCounter(
         guess: String,
         realAnswer: String,
     ): Pair<Int, Int> =
@@ -93,7 +93,7 @@ object CowsAndBulls {
      * Extracts a random number from a sequence.
      * @return String
      */
-    private fun fetchRandomNumber(): String = sequenceOfNumbers.random().also {
+    fun fetchRandomNumber(): String = sequenceOfNumbers.random().also {
         sequenceOfNumbers.remove(it)
     }
 
