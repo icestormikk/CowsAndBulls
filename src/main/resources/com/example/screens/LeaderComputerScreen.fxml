@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER">
+         <children>
+            <Label text="Ваше предположение:">
+               <font>
+                  <Font name="Calibri Bold" size="28.0" />
+               </font>
+            </Label>
+            <TextField fx:id="playerGuess" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="69.0" prefWidth="207.0" promptText="42">
+               <font>
+                  <Font name="Calibri Bold" size="40.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </TextField>
+            <Label fx:id="additionalTitle" layoutX="71.0" layoutY="10.0" text="В этом числе...">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+            </Label>
+            <FlowPane alignment="CENTER">
+               <children>
+                  <Label fx:id="cowsAndBullsInfo" text="0 коров и 0 быков" textFill="#12dd1d">
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children></FlowPane>
+            <Button fx:id="submitPlayerAnswer" mnemonicParsing="false" text="Отправить">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+               <styleClass>
+                  <String fx:value="menuButton" />
+                  <String fx:value="submitButton" />
+               </styleClass>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="errorLabel" layoutX="127.0" layoutY="134.0" textFill="#e80f0f">
+               <font>
+                  <Font name="Calibri Bold" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+         </children></VBox>
+   </children>
+</FlowPane>
