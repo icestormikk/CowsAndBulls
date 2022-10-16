@@ -75,7 +75,6 @@ class GameView: View("Game View") {
     }
 
     fun configureInitialState(isRestart: Boolean = false) {
-        println(CHOSEN_GAMEMODE)
         when (CHOSEN_GAMEMODE) {
             LEADER_COMPUTER -> {
                 root.center.replaceWith(leaderComputerScreen.root)
@@ -111,7 +110,6 @@ class GameView: View("Game View") {
         }
     }
     private fun restart() {
-        println("RESTART")
         restartsCounter++
 
         CowsAndBulls.initializeGame(CHOSEN_SEQUENCE_LENGTH)
