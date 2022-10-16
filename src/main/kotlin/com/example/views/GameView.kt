@@ -98,7 +98,7 @@ class GameView: View("Game View") {
         CowsAndBulls.clearGame()
         listOf(lastSequenceState, noMoreAnswersSequence).forEach { it.clear() }
         (historyTableViewContainer.children[0] as TableView<HistoryNote>).refresh()
-        timerAnimation.apply { stop(); duration = Duration.ZERO }
+        timerAnimation.apply { stop(); gameDuration = Duration.ZERO }
         runLater {
             replaceWith<HomeView>()
         }
@@ -108,7 +108,7 @@ class GameView: View("Game View") {
         restartsCounter++
 
         CowsAndBulls.initializeGame(CHOSEN_SEQUENCE_LENGTH)
-        duration = Duration.ZERO
+        gameDuration = Duration.ZERO
         listOf(lastSequenceState, noMoreAnswersSequence).forEach {
             it.clear()
         }
@@ -122,22 +122,19 @@ class GameView: View("Game View") {
 
         configureInitialState(isRestart = true)
     }
-    private fun victory() {
-        iThinkLabel.text = "Вы загадали число: $actualAnswer"
-        aboutTimeLabel.text = "Ответ был получен за время: ${duration.toBeautyString()}"
-
+    fun victory() {
         timerAnimation.stop()
         CowsAndBulls.addStatistics(
             StatisticsNote(
                 startDateTime.format(DateTimeFormatter.ofPattern("dd MMM yyyy - HH:mm:ss")),
                 gamemode.title,
-                duration.toSeconds(),
+                gameDuration.toSeconds(),
                 restartsCounter,
-                duration.toBeautyString()
+                gameDuration.toBeautyString()
             )
         )
     }
-    private fun error() {
+    fun error() {
         callAlertWindow(
             headerText = "Что-то пошло не так...",
             content = "Не удалось сделать предположение о следующем числе. Возможно, " +
@@ -148,7 +145,7 @@ class GameView: View("Game View") {
     }
 
     @Suppress("UNCHECKED_CAST")
-    private fun gameStatisticsFieldsUpdate() {
+    fun gameStatisticsFieldsUpdate() {
         (historyTableViewContainer.children[0] as TableView<HistoryNote>)
             .refresh()
 
@@ -191,8 +188,8 @@ class GameView: View("Game View") {
 
         timerAnimation = Timeline(
             KeyFrame(Duration.millis(1.0), {
-                duration += (it.source as KeyFrame).time
-                with(duration) {
+                gameDuration += (it.source as KeyFrame).time
+                with(gameDuration) {
                     stringTimeProperty.set(toBeautyString())
                 }
             })
