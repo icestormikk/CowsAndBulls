@@ -1,22 +1,17 @@
 package com.example.views
 
 import com.example.configuration.GAME_TITLE
+import com.example.configuration.zoomOnHover
 import com.example.screens.AuthorInfoScreen
 import com.example.fragments.Header
 import com.example.screens.RulesScreen
 import com.example.screens.StartScreen
 import com.example.screens.StatisticsScreen
-import javafx.geometry.Point2D
 import javafx.scene.control.Button
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
-import javafx.util.Duration
 import org.kordamp.ikonli.javafx.FontIcon
 import tornadofx.*
-
-private const val ZOOM_X_COF = 1.02
-private const val ZOOM_Y_COF = 1.05
-private const val ANIMATION_DURATION = 100.0
 
 private const val START_GAME_LABEL = "Начать игру"
 private const val RULES_LABEL = "Правила"
@@ -37,10 +32,6 @@ class HomeView: View(
 
     init {
         root.top.add(header)
-        currentStage.let {
-            it!!.isResizable = true
-        }
-
         configureMenu()
     }
 
@@ -55,13 +46,7 @@ class HomeView: View(
                 Button(optionName).addClass("menuButton").apply {
                     useMaxWidth = true
                     graphic = optionIcon
-                    onHover {
-                        scale(
-                            time = Duration.millis(ANIMATION_DURATION),
-                            scale = Point2D(if (it) ZOOM_X_COF else 1.0, if (it) ZOOM_Y_COF else 1.0),
-                            reversed = false
-                        ).play()
-                    }
+                    zoomOnHover()
                     onLeftClick {
                         if (this.text == STATISTICS_LABEL)
                             statisticsScreen.causeStatsTableUpdate()
