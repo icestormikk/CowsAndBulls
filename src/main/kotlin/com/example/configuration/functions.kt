@@ -1,5 +1,6 @@
 package com.example.configuration
 
+import javafx.scene.control.Alert
 import javafx.scene.control.TableView
 import javafx.util.Duration
 import tornadofx.*
@@ -23,3 +24,11 @@ fun Duration.toBeautyString() = String.format(
     toMinutes().toInt() % MINUTES_IN_HOUR,
     toSeconds().toInt() % MINUTES_IN_HOUR
 )
+
+fun callAlertWindow(headerText: String, content: String, title: String? = null) =
+    alert(
+        type = Alert.AlertType.ERROR,
+        header = headerText,
+        content = content,
+        title = title ?: "The algorithms are not perfect"
+    )
