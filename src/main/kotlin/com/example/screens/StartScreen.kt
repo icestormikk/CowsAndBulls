@@ -1,10 +1,10 @@
 package com.example.screens
 
+import com.example.configuration.CHOSEN_GAMEMODE
+import com.example.configuration.CHOSEN_SEQUENCE_LENGTH
 import com.example.configuration.Gamemode
 import com.example.configuration.MAX_SEQUENCE_LENGTH
 import com.example.functions.CowsAndBulls
-import com.example.views.CHOSEN_GAMEMODE
-import com.example.views.CHOSEN_SEQUENCE_LENGTH
 import com.example.views.GameView
 import javafx.scene.Parent
 import javafx.scene.control.Button
