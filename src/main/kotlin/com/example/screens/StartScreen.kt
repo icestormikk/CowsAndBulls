@@ -4,6 +4,7 @@ import com.example.configuration.CHOSEN_GAMEMODE
 import com.example.configuration.CHOSEN_SEQUENCE_LENGTH
 import com.example.configuration.Gamemode
 import com.example.configuration.MAX_SEQUENCE_LENGTH
+import com.example.configuration.zoomOnHover
 import com.example.functions.CowsAndBulls
 import com.example.views.GameView
 import javafx.scene.Parent
@@ -54,6 +55,7 @@ class StartScreen: Fragment("StartScreen") {
 
             root.parent.parent.replaceWith(gameScreen.root)
         }
+        startButton.zoomOnHover()
     }
 
     private fun configureGamemodeButtons() {
@@ -69,6 +71,7 @@ class StartScreen: Fragment("StartScreen") {
                     listOf(gamemodeLeaderPlayer.parent as VBox, gamemodeLeaderComputer.parent as VBox)
                         .forEach { it.border = Border.EMPTY }
                     selectBox()
+                    zoomOnHover()
                     when (flowPane) {
                         gamemodeLeaderPlayer -> { CHOSEN_GAMEMODE = Gamemode.LEADER_PLAYER }
                         gamemodeLeaderComputer -> { CHOSEN_GAMEMODE = Gamemode.LEADER_COMPUTER }

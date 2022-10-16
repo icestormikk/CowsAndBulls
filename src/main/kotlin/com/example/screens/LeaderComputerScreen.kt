@@ -1,6 +1,7 @@
 package com.example.screens
 
 import com.example.configuration.CHOSEN_SEQUENCE_LENGTH
+import com.example.configuration.zoomOnHover
 import com.example.domain.HistoryNote
 import com.example.functions.CowsAndBulls
 import com.example.views.GameView
@@ -26,6 +27,9 @@ class LeaderComputerScreen: Fragment("LeaderComputerScreen") {
         submitPlayerAnswer.onLeftClick {
             with (errorLabel) {
                 if (playerGuess.hasValidInput()) {
+                    text = ""
+
+                    additionalTitle.text = "В этом слове содержатся.."
                     with(CowsAndBulls.cowsAndBullsCounter(
                         playerGuess.text, realAnswer
                     )) {
@@ -44,11 +48,12 @@ class LeaderComputerScreen: Fragment("LeaderComputerScreen") {
                 } else text = "Некорректный ввод"
             }
         }
+        submitPlayerAnswer.zoomOnHover()
     }
 
     fun configureInitialState() {
         additionalTitle.text = ""
-        cowsAndBullsInfo.text = ""
+        cowsAndBullsInfo.text = "Число загадано. Сделайте первое предположение."
         playerGuess.text = ""
         errorLabel.text = ""
         submitPlayerAnswer.isDisable = false
@@ -57,6 +62,8 @@ class LeaderComputerScreen: Fragment("LeaderComputerScreen") {
     }
 
     private fun victory() {
+        gameView.victory()
+
         additionalTitle.text = "Вы угадали число!"
         submitPlayerAnswer.isDisable = true
     }
