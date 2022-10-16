@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.example"
-version = "1.0"
+version = "1.1"
 
 javafx {
     modules = listOf("javafx.controls", "javafx.media", "javafx.fxml")
@@ -43,7 +43,7 @@ val fatJar = task("fatJar", type = Jar::class) {
     archiveBaseName.set("${project.name}-fat")
     manifest {
         attributes["Implementation-Title"] = "CowsAndBulls Kotlin Application"
-        attributes["Implementation-Version"] = "1.0"
+        attributes["Implementation-Version"] = "1.1"
         attributes["Main-Class"] = "com.example.MainKt"
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
