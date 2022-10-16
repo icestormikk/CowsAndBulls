@@ -31,6 +31,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.properties.Delegates
 
+private const val NOT_WORKING_LABEL = "Отключено в данном режиме"
+
 class GameView: View("Game View") {
     override val root: BorderPane by fxml()
     private val leaderComputerScreen = find(LeaderComputerScreen::class)
@@ -78,10 +80,15 @@ class GameView: View("Game View") {
             LEADER_COMPUTER -> {
                 root.center.replaceWith(leaderComputerScreen.root)
                 leaderComputerScreen.configureInitialState()
+
+                possibleAnswers.promptText = NOT_WORKING_LABEL
+                noMoreAnswers.promptText = NOT_WORKING_LABEL
             }
             LEADER_PLAYER -> {
                 root.center.replaceWith(leaderPlayerScreen.root)
                 leaderPlayerScreen.configureInitialState()
+                possibleAnswers.promptText = "Здесь будут числа-претенденты на правильный ответ"
+                noMoreAnswers.promptText = "Числа исключенные из предыдущего списка"
             }
         }
         startDateTime = LocalDateTime.now()

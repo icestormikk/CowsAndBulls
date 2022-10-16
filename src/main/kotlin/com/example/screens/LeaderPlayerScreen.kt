@@ -2,6 +2,7 @@ package com.example.screens
 
 import com.example.configuration.CHOSEN_SEQUENCE_LENGTH
 import com.example.configuration.toBeautyString
+import com.example.configuration.zoomOnHover
 import com.example.domain.HistoryNote
 import com.example.functions.CowsAndBulls
 import com.example.views.GameView
@@ -42,6 +43,7 @@ class LeaderPlayerScreen: Fragment("LeaderPlayerScreen") {
             }
             else victory(gameView.gameDuration)
         }
+        submitCountsButton.zoomOnHover()
     }
 
     fun configureInitialState() {
