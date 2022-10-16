@@ -19,7 +19,7 @@ private const val STATISTICS_LABEL = "Статистика"
 private const val ABOUT_AUTHOR_LABEL = "Об авторе"
 
 class HomeView: View(
-    title = "$GAME_TITLE : Home"
+    title = GAME_TITLE
 ) {
     override val root: BorderPane by fxml()
 
