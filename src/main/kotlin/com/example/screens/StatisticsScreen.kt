@@ -9,14 +9,13 @@ import javafx.scene.control.Label
 import javafx.scene.control.TableView
 import javafx.scene.layout.FlowPane
 import tornadofx.*
-import java.util.*
+import java.util.Locale
 
 class StatisticsScreen: Fragment("StatisticsScreen") {
     override val root: Parent by fxml()
 
     private val statsContainer: FlowPane by fxid()
     private val favoriteMode: Label by fxid()
-    private val averageTime: Label by fxid()
     private val leaderComputerAverageTime: Label by fxid()
     private val leaderPlayerAverageTime: Label by fxid()
 
@@ -43,18 +42,22 @@ class StatisticsScreen: Fragment("StatisticsScreen") {
         with(getStatistics()) {
             if (isNotEmpty()) {
                 favoriteMode.text = groupBy { it.gamemodeTitle }.maxBy { it.value.size }.key
-                leaderComputerAverageTime.text = String.format(
-                    Locale.ENGLISH,
-                    "%6f сек.",
-                    filter { it.gamemodeTitle == Gamemode.LEADER_COMPUTER.title }
-                        .map { it.durationOfGameInSeconds }.average()
-                )
-                leaderPlayerAverageTime.text = String.format(
-                    Locale.ENGLISH,
-                    "%6f сек.",
-                    filter { it.gamemodeTitle == Gamemode.LEADER_PLAYER.title }
-                        .map { it.durationOfGameInSeconds }.average()
-                )
+                if (any { it.gamemodeTitle == Gamemode.LEADER_COMPUTER.title }) {
+                    leaderComputerAverageTime.text = String.format(
+                        Locale.ENGLISH,
+                        "%6f сек.",
+                        filter { it.gamemodeTitle == Gamemode.LEADER_COMPUTER.title }
+                            .map { it.durationOfGameInSeconds }.average()
+                    )
+                }
+                if (any { it.gamemodeTitle == Gamemode.LEADER_PLAYER.title }) {
+                    leaderPlayerAverageTime.text = String.format(
+                        Locale.ENGLISH,
+                        "%6f сек.",
+                        filter { it.gamemodeTitle == Gamemode.LEADER_PLAYER.title }
+                            .map { it.durationOfGameInSeconds }.average()
+                    )
+                }
             }
         }
     }
